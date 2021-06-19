@@ -1,0 +1,276 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url(pexels-karolina-grabowska-5632386.jpg);
+    background-color: #faf1ea;
+    background-size:auto;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Navigation Bar CSS */
+.navbar{
+    background-color: rgba(1, 1, 1, 0.8);
+}
+.search{
+    display: flex;
+    height: 1.5rem;
+}
+.navItems ul{
+    margin-left: auto;
+}
+.search button{
+    background-color:rgba(1, 1, 1, 0.4);
+    outline: none;
+}
+.search input{
+    outline: none;
+}
+/* Categories CSS */
+.categories{
+    position: relative;
+}
+.categories a{
+    padding: 0.5rem;
+    width: 100%;
+    color: black;
+    text-decoration: none;
+}
+.categories li i{
+    position: absolute;
+    right: 15px;
+}
+.categories a:hover{
+    color: whitesmoke;
+    background-color: rgba(1, 1, 1, 0.2);   
+}
+.categories ul, li{
+    padding: 0px;
+    width: 100%;
+    margin-bottom:0.5rem ;
+}
+.categories li{
+    list-style-type: none;
+    width: 100%;
+}
+.parentDiv{
+    display: grid;
+    place-items: center;
+    border-left: 2px solid black;
+}
+.parentCategories{
+    display: flex;
+    align-items:center;
+    justify-items: center;
+}
+.bodyDiv{
+    background-color: rgba(255,255,255,0.8);
+}
+#mainMenu{
+    display: none;
+    margin-bottom: 2rem;
+}
+.clickToShow ul{
+    display: none;
+}
+/*  Categories CSS for small and extra small screens */
+.categoriesRow li, ul{
+    list-style-type: none;
+    padding: 0px;
+}
+.categoriesRow a{
+    text-decoration: none;
+    padding: 0.5rem 0rem;
+    color: black;
+}
+.categoriesRow a:hover{
+    background-color: rgba(1, 1, 1, 0.2);
+    color: whitesmoke;
+}
+/* Items CSS */
+.anchor img{
+    width: 100%;
+}
+.item{
+    padding: 0.5rem;
+    background-color: rgba(255,255,255,0.8);
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.item h2{
+    font-size: 19px;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    color: black;
+    font-weight: bold;   
+}
+.itemsDisplay div.center, .fastCart{
+    display: grid;
+    place-content: center;
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: rgba(255,255,255,0.8) ;
+}
+.item a{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* About Us CSS (what is FastCart>)  */
+.aboutUS{
+    background-color:rgba(255,255,255,0.8);
+}
+.placement{
+    display: grid;
+    place-content: center;
+    min-height: 500px;
+}
+.aboutUS button{
+    outline: none;
+}
+.aboutUS button:hover{
+    width: 200px;
+}
+/* Footer CSS */
+.footer{
+    background-color: rgba(1, 1, 1, 0.8) ;
+    padding: 3rem;
+    min-height: 300px;
+    display: grid;
+    align-items: center;
+    margin: 0px;
+}
+.footer a{
+    color: lightgray;
+}
+.center-items{
+    display: grid;
+    place-content: center;
+}
+.icons{
+    margin-top: 2rem;
+}
+.icons i{
+    margin-right: 0.5rem;
+}
+.footer i, p,li{
+    color: lightslategrey;
+}
+.footer .row div{
+    margin-bottom: 1.5rem;
+}
+/* Login and Sign Up Forms CSS */
+  .modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  .modal form{
+    padding: 2rem; border: 1px solid #c9ac08; box-shadow: 0 1px 5px rgba(104, 104, 104,0.8);
+    background-color: rgba(1, 1, 1, 0.7);
+    position: relative;
+  }
+  .loginForm, .signupForm{
+      display: none;
+  }
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 5;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+  /* Item order page CSS */
+  .productDetails{
+      background-color: rgba(1, 1, 1, 0.7) ;
+      position: relative;
+      color: wheat;
+      min-height: 450px;
+      margin-bottom: 2rem;
+  }
+  .productDetails .btns{
+      position: absolute;
+      left: 5px;   
+      bottom: 5px;
+    }
+.btn{
+      background-color: black;
+      color: gold;
+      margin-left: 5px;
+  }
+  .btn:hover{
+      background-color: white;
+      color: black;
+  }
+  .productImage{
+      margin-bottom: 2rem;
+  }
+/* Help Desk Page CSS */
+.faqs{
+   background-color: rgba(1, 1, 1, 0.7) ;
+   padding: 2rem;
+   margin-bottom: 1.5rem;
+   color: gold;
+}
+.answer{
+    display: none;
+}
+.question,.answer{
+    border: 1px solid #c9ac08; 
+    margin: 1rem;
+    position: relative;
+    padding: 1rem;
+}
+.question h4{
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline;
+    margin-right: 5px;   
+}
+.question i{
+    position: absolute;
+    right: 5px;
+    /* top: 5px; */
+    margin-left: 5px;
+}
+.submitTicket{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(1, 1, 1, 0.7);
+}
+                                /* Media Queries used simply to change some CSS elements according to screen size.These elements were not possible to manipulate using only Bootstrap Classes. Grid and structuring for different screen sizes is done through only Bootstrap Built In Classes */
+/* Media Queries     */
+
+@media (max-width:768px){
+    .parentDiv{
+        border-left: none;
+    }
+}
