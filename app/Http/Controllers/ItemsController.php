@@ -23,6 +23,12 @@ class ItemsController extends Controller
         return view("admin")->with('items',$Items);
     }
 
+    public function category($cat){
+        $Items = Item::where('category',$cat)->get();
+        return view("categories")->with('items',$Items);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

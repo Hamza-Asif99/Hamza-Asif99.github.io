@@ -33,6 +33,7 @@
                     <div class="text-warning text-center p-4" style="background-color: rgba(1, 1, 1, 0.8)">Current Database</div>
                     <thead class="text-warning">
                         <tr>
+                        <th scope="col">id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Image-src</th>
                         <th scope="col">Price</th>
@@ -45,6 +46,7 @@
                     <tbody>
                        @foreach($items as $item)
                             <tr>
+                                <td>{{$item->id}}</td>
                                 <td>{{$item->title}}</td>
                                 <td>{{$item->image}}</td>
                                 <td>{{$item->price}}</td>

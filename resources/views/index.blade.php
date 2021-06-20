@@ -38,22 +38,22 @@
                     
                     <h2 id="h2"></h2>
                     <ul class="ulClothing">
-                        <li><a href="/categories">Men's Fashion</a></li>
-                        <li><a href="/categories">Women's Fashion</a></li>
-                        <li><a href="/categories">Gym Clothing</a></li>
+                        <li><a href="{{ route('category.category','Men\'s Fashion')}}">Men's Fashion</a></li>
+                        <li><a href="{{ route('category.category','Women\'s Fashion')}}">Women's Fashion</a></li>
+                        <li><a href="{{ route('category.category','Gym Clothing')}}">Gym Clothing</a></li>
                     </ul>
                     <ul class="ulElectronics">
-                        <li><a href="/categories">Phone</a></li>
-                        <li><a href="/categories">Computers</a></li>
-                        <li><a href="/categories">Monitor</a></li>
+                        <li><a href="{{ route('category.category','Phone')}}">Phone</a></li>
+                        <li><a href="{{ route('category.category','Computers')}}">Computers</a></li>
+                        <li><a href="{{ route('category.category','Monitor')}}">Monitor</a></li>
                     </ul>
                     <ul class="ulPets">
-                        <li><a href="/categories">Pet Toys</a></li>
-                        <li><a href="/categories">Pet Food</a></li>
+                        <li><a href="{{ route('category.category','Pet Toys')}}">Pet Toys</a></li>
+                        <li><a href="{{ route('category.category','Pet Food')}}">Pet Food</a></li>
                     </ul>
                     <ul class="ulOutdoors">
-                        <li><a href="/categories">Hiking Gear</a></li>
-                        <li><a href="/categories">Gym Equipment</a></li>
+                        <li><a href="{{ route('category.category','Hiking Gear')}}">Hiking Gear</a></li>
+                        <li><a href="{{ route('category.category','Gym Equipment')}}">Gym Equipment</a></li>
                     </ul>
                 </div>
             </div>

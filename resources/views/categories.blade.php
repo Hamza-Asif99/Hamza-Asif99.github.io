@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="design.css">
-    <script defer src="categories.js"></script>
+    <!-- <script defer src="categories.js"></script> -->
     <script defer src="validation.js"></script>
 
 </head>
@@ -18,101 +18,40 @@
 
     @section('content')
 
-    <div class="container itemsDisplay">
-        <div class="center text-center">
+    @if(count($items)>0)
+        <div class="container itemsDisplay">
+            <div class="center text-center">
+                <h3 id="pageTitle"></h3>
+            </div>
+            <div class="row">
+            @foreach($items as $item)
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="item">
+                        <a href="/item" class="anchor">
 
-            <h3 id="pageTitle"></h3>
+                        <img src="{{$item->image}}" id="images" alt="Item display">
+                        <div class="details">
+
+                            <h2>{{$item->title}}</h2>
+                            <span>{{$item->price}}</span>
+                        </div>
+                        </a>
+                        <p></p>
+                    </div>
+                </div>
+
+            @endforeach
+
+            </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
+        
 
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
+    @else
+        <h3>no data</h3>
 
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
+    @endif
 
-                </div>
-            </div>
 
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
-
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
-
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
-
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
-
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
-
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
-
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
-
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
-
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4">
-                <div class="item">
-                    <a href="/item" class="anchor">
-
-                        <img src="" id="images" alt="Item display">
-                        <div class="details">
-
-                            <h2></h2>
-                            <span></span>
-                        </div>
-                    </a>
-                    <p></p>
-                </div>
-            </div>
-            
-        </div>
-    </div>
 
     @endsection
     
