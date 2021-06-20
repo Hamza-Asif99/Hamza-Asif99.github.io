@@ -31,4 +31,5 @@ class NavigationController extends Controller
 
             return view("helpDesk");
     }
+    
 }

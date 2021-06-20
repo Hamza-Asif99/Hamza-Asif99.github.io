@@ -24,27 +24,10 @@ Route::get('/helpDesk','App\Http\Controllers\NavigationController@helpDesk');
 Route::get('/shoppingCart','App\Http\Controllers\NavigationController@shoppingCart');
 Route::get('/wishList','App\Http\Controllers\NavigationController@wishList');
 Route::get('/categories','App\Http\Controllers\NavigationController@categories');
+Route::get('/admin','App\Http\Controllers\ItemsController@admin');
+// Route::get('/items')
 
-// Route::get("/{name}",function($name){
-//     // echo $name;
-//     return NavigationController('/','App\Http\Controllers\NavigationController@index([$name])');
-// });
-
-// Route::get('/item' ,function() {
-//     return view('item');
-// });
-// Route::get('/wishList' ,function() {
-//     return view('wishList');
-// });
-// Route::get('/shoppingCart' ,function() {
-//     return view('shoppingCart');
-// });
-// Route::get('/categories' ,function() {
-//     return view('categories');
-// });
-// Route::get('/helpDesk' ,function() {
-//     return view('helpDesk');
-// });
+Route::resource('items','App\Http\Controllers\ItemsController');
 
 
-// Route::get('/wishList',wishList);
+

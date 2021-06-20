@@ -151,3 +151,33 @@ function latestSearchesClick(){
 
 }
 latestSearchesClick()
+
+
+let allImage = document.querySelectorAll(".anchor img");
+let allTitle = document.querySelectorAll(".anchor h2");    
+let allPrice = document.querySelectorAll(".anchor span")
+
+allImage[0].setAttribute("src",localStorage.getItem("latestImage1"))
+allTitle[0].innerText = localStorage.getItem("latestTitle1")
+allPrice[0].innerText = localStorage.getItem("latestPrice1")
+
+if(localStorage.getItem("latestImage2")!=null){
+    allImage[1].setAttribute("src",localStorage.getItem("latestImage2"))
+    allTitle[1].innerText = localStorage.getItem("latestTitle2")
+    allPrice[1].innerText = localStorage.getItem("latestPrice2")
+}
+if(localStorage.getItem("latestImage3")!=null){
+    allImage[2].setAttribute("src",localStorage.getItem("latestImage3"))
+    allTitle[2].innerText = localStorage.getItem("latestTitle3")
+    allPrice[2].innerText = localStorage.getItem("latestPrice3")
+    document.getElementById("latestSearchDiv").style.display = "none"
+    document.getElementById("latestSearchDiv2").style.display = "block"
+
+}
+
+function changeStorage(){
+    localStorage.setItem("addToTable",2)
+}
+function changeStorage2(){
+    localStorage.setItem("addToWishlist",2)
+}
