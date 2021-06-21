@@ -37,16 +37,16 @@ function latestSearches(image,title,price,description){
             // localStorage.setItem("latestDesc3",description);
         }
 }
-var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var  response = JSON.parse(xhttp.responseText);
-            // console.log(response[10].length);
-            for(let i = 0; i < response[10].length;i++){
-                allImages[i].setAttribute("src",response[10][i].image);
-                allTitles[i].innerText = response[10][i].title; 
-                allPrices[i].innerText ="$"+ response[10][i].price;
-                allDescriptions[i].innerText =response[10][i].description;
+// var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             var  response = JSON.parse(xhttp.responseText);
+//             // console.log(response[10].length);
+//             for(let i = 0; i < response[10].length;i++){
+//                 allImages[i].setAttribute("src",response[10][i].image);
+//                 allTitles[i].innerText = response[10][i].title; 
+//                 allPrices[i].innerText ="$"+ response[10][i].price;
+//                 allDescriptions[i].innerText =response[10][i].description;
 
                 // allAnchors[i].addEventListener("click",function(){
                 //     localStorage.setItem("image",response[10][i].image);
@@ -56,19 +56,19 @@ var xhttp = new XMLHttpRequest();
                 //     // latestSearches(response[10][i].image,response[10][i].title,"$"+response[10][i].price,response[10][i].description)
                 // })
 
-                popRightNow[i].addEventListener("click",function(){
-                    localStorage.setItem("image",response[10][i].image);
-                    localStorage.setItem("title",response[10][i].title);
-                    localStorage.setItem("price","$"+response[10][i].price);
-                    localStorage.setItem("description",response[10][i].description);
-                    latestSearches(response[10][i].image,response[10][i].title,"$"+response[10][i].price,response[10][i].description)
-                })
+//                 popRightNow[i].addEventListener("click",function(){
+//                     localStorage.setItem("image",response[10][i].image);
+//                     localStorage.setItem("title",response[10][i].title);
+//                     localStorage.setItem("price","$"+response[10][i].price);
+//                     localStorage.setItem("description",response[10][i].description);
+//                     latestSearches(response[10][i].image,response[10][i].title,"$"+response[10][i].price,response[10][i].description)
+//                 })
 
-            }
-        };
-    }
-    xhttp.open("GET", "data.json", true);
-    xhttp.send();
+//             }
+//         };
+//     }
+//     xhttp.open("GET", "data.json", true);
+//     xhttp.send();
 
 var categoryLI = document.querySelectorAll(".desktopView ul li a");
 var smallScreen = document.querySelectorAll(".smallView ul li a");
@@ -180,4 +180,20 @@ function changeStorage(){
 }
 function changeStorage2(){
     localStorage.setItem("addToWishlist",2)
+}
+var allPop = document.querySelectorAll(".popPics")
+var allPopImages = document.querySelectorAll(".popPics img")
+var allPopTitles = document.querySelectorAll(".popPics h2")
+var allPopPrices = document.querySelectorAll(".popPics span")
+var allPopDescs = document.querySelectorAll(".popPics p")
+
+for(let i = 0;i<allPop.length;i++){
+    allPop[i].addEventListener("click",function(){
+        localStorage.setItem("image",allPopImages[i].getAttribute("src"))
+        localStorage.setItem("title",allPopTitles[i].innerText)
+        localStorage.setItem("price",allPopPrices[i].innerText)
+        localStorage.setItem("description",allPopDescs[i].innerText)
+        latestSearches(allPopImages[i].getAttribute("src"),allPopTitles[i].innerText,allPopPrices[i].innerText,allPopDescs[i].innerText)
+
+    })
 }

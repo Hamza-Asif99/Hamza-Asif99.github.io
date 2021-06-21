@@ -21,3 +21,7 @@ document.getElementById("shoppingCart").addEventListener("click",function(){
 document.getElementById("wishList").addEventListener("click",function(){
     localStorage.setItem("addToWishlist",1)
 })
+function changeStorage(){
+    localStorage.setItem("addToTable",2)
+}
+changeStorage();

@@ -28,6 +28,20 @@ class ItemsController extends Controller
         return view("categories")->with('items',$Items);
     }
 
+    public function itemDisplay($itemid){
+        $Items = Item::where('id',$itemid)->get();
+        // print $item[0]->id;
+        return view("item")->with('items',$Items);
+    }
+
+    public function homeItems($homeItems){
+        $Items = Item::where('category',$homeItems)->get();
+        return view("index")->with('items',$Items);
+    }
+
+    public function item(){
+        return view("item");
+    }
 
     /**
      * Show the form for creating a new resource.

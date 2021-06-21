@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="navMain">
 
-            <a href='/' class="navbar-brand"><i class="fas fa-store" aria-hidden="true"></i>
+            <a href="{{ route('main.main','default')}}" class="navbar-brand"><i class="fas fa-store" aria-hidden="true"></i>
                 <span>FastCart</span></a>
             
         </div>
@@ -77,7 +77,7 @@
                 <div class="col-12 col-sm-4 center-items text-center">
                     <h4>Menu</h4>
                     <ul >
-                        <li><a  href="/">Home</a></li>
+                        <li><a  href="{{ route('main.main','default')}}">Home</a></li>
                         <li><a href="#"onclick="document.querySelector('.loginForm ').style.display='block'">Login</a></li>
                         <li><a href="#" onclick="document.querySelector('.signupForm ').style.display='block'">Sign Up</a></li>
                         <li><a href="/helpDesk">Help Desk</a></li>

@@ -23,14 +23,15 @@
         <div class="center text-center">
 
             <h3>Order Now !</h3>
+           
         </div>
         <div class="row">
             <div class="col-12 col-lg-4 text-center productImage">
-                <img id="productImage" src="" width="100%" alt="Image of The Item">
+                <img src="" id="productImage" width="100%" alt="Image of The Item">
             </div>
             <div class="col-12 offset-lg-1 col-lg-7 productDetails ">
                 <div>
-
+                    
                     <h3 style="color: gold;" id="productTitle"></h3>
                     <h4 style="color: gold;" id="productPrice"></h4>
                     <h4 style="color: gold;">Description</h2>
@@ -62,13 +63,7 @@
     @endsection
     
 
-        <script>
-
-            function changeStorage(){
-                localStorage.setItem("addToTable",2)
-            }
-           
-        </script>
+        
 
 </body>
 </html>

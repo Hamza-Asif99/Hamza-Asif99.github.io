@@ -81,33 +81,33 @@
                 <h4 class="m-4">Clothing</h4>
 
                         <ul>
-                            <li><a href="/categories">Men's Fashion</a></li>
-                            <li><a href="/categories">Women's Fashion</a></li>
-                            <li><a href="/categories">Gym Clothing</a></li>
+                            <li><a href="{{ route('category.category','Men\'s Fashion')}}">Men's Fashion</a></li>
+                            <li><a href="{{ route('category.category','Women\'s Fashion')}}">Women's Fashion</a></li>
+                            <li><a href="{{ route('category.category','Gym Clothing')}}">Gym Clothing</a></li>
                         </ul>
         
             </div>
             <div class="col-6 col-sm-3  text-center">
                 <h4 class="m-4">Electronics</h4>
                 <ul>
-                    <li><a href="/categories">Phone</a></li>
-                    <li><a href="/categories">Computers</a></li>
-                    <li><a href="/categories">Monitor</a></li>
+                    <li><a href="{{ route('category.category','Phone')}}">Phone</a></li>
+                    <li><a href="{{ route('category.category','Computers')}}">Computers</a></li>
+                    <li><a href="{{ route('category.category','Monitor')}}">Monitor</a></li>
                 </ul>
             </div>
             <div class="col-6 col-sm-3  text-center">
                 <h4 class="m-4">Pets</h4>
                 <ul>
-                    <li><a href="/categories">Pet Toys</a></li>
-                    <li><a href="/categories">Pet Food</a></li>
+                    <li><a href="{{ route('category.category','Pet Toys')}}">Pet Toys</a></li>
+                    <li><a href="{{ route('category.category','Pet Food')}}">Pet Food</a></li>
                     
                 </ul>
             </div>
             <div class="col-6 col-sm-3  text-center">
                 <h4 class="m-4">Outdoors</h4>
                 <ul>
-                    <li><a href="/categories">Hiking Gear</a></li>
-                    <li><a href="/categories">Gym Equipment</a></li>
+                    <li><a href="{{ route('category.category','Hiking Gear')}}">Hiking Gear</a></li>
+                    <li><a href="{{ route('category.category','Gym Equipment')}}">Gym Equipment</a></li>
                 </ul>
             </div>
         </div>
@@ -179,11 +179,46 @@
         </div>
     </div>
 
-    <!-- Items Start  -->
+    @if(count($items)>0)
+        <div class="container itemsDisplay">
+            <div class="center text-center">
+                <h3 >Popular Right Now</h3>
+            </div>
+            <div class="row">
+            @foreach($items as $item)
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="item">
+                        <!-- echo {{$item->id}} -->
+                        <a href="/item"  class=" popPics">
 
-                                                    <!-- Html for the display items written. They will be injected in by script.js 
-                                                    by pulling data from data.json file -->
-    <div class="container itemsDisplay">
+                        <img src="{{$item->image}}" class="w-100" id="images" alt="Item display">
+                        <div class="details">
+
+                            <h2 id="title">{{$item->title}}</h2>
+                            <span id="price">${{$item->price}}</span>
+                        </div>
+                        <p id="description">{{$item->desc}}</p>
+                        </a>
+                    </div>
+                </div>
+
+            @endforeach
+
+            </div>
+        </div>
+        
+
+    @else
+        <!-- <h3>no data</h3> -->
+
+    @endif
+
+
+
+
+
+
+    <!-- <div class="container itemsDisplay">
         <div class="center text-center">
 
             <h3>Popular Right Now</h3>
@@ -277,7 +312,7 @@
             </div>
             
         </div>
-    </div>
+    </div> -->
                                                     <!-- ABout us section -->
     <h2 class="fastCart">What is FastCart?</h2>
     <div class="container-fluid aboutUS mb-3">
