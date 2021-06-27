@@ -34,12 +34,11 @@ Route::post('/search','App\Http\Controllers\SearchController@search');
 
 Route::get('/request','App\Http\Controllers\ItemsController@xmlhttprequest');
 
-Auth::routes();
 
 Route::resource('users','App\Http\Controllers\UsersController');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
