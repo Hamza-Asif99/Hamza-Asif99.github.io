@@ -10,15 +10,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
+
     <script src="https://kit.fontawesome.com/0793418c64.js" crossorigin="anonymous"></script>
 
     <title>Document</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="navMain">
 
-            <a href="{{ route('main.main','default')}}" class="navbar-brand"><i class="fas fa-store" aria-hidden="true"></i>
+            <a href="{{ route('main.main')}}" class="navbar-brand"><i class="fas fa-store" aria-hidden="true"></i>
                 <span>FastCart</span></a>
             
         </div>
@@ -26,12 +28,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navSupportedContent" class="collapse navbar-collapse navItems">
-            <div class="search d-flex w-50">
-
-                <input class="input w-100"  type="text" placeholder="Search">
-                <button type="submit" class="bg-dark text-light border-0"><i class="fas fa-search"></i></button>
+            <div class=" w-50">
+                <form method="POST" action="/search">
+                <div class="d-flex" style="position:relative">
+                @csrf
+                
+                    <input class="input w-100" required onkeyup="searchSuggest()" name="title" id="txtSearch"  type="text" placeholder="Search">
+                    <!-- <a href="#" class="btn"><i class="fas fa-search"></i></a> -->
+                    <!-- <button type="submit" class="btn btn-warning"><i class="fas fa-search"></i></button> -->
+                    <button type="submit" class="bg-dark text-light border-0" value="search"><i class="fas fa-search"></i></button>
+                </div>
+                </form>
+                <div id="searchSuggestion" style="color:white;z-index:99; background-color:rgba(1,1,1,0.8); position:absolute;padding:0.7rem;display:none" >
+                    
+                </div>
             </div>
             <ul class="navbar-nav active">
+                        
                 <li>
                     <a href="#" class="nav-link" onclick="document.querySelector('.loginForm ').style.display='block'" >Login</a>
                 </li>
@@ -97,31 +110,28 @@
 
             <div style="width: 65%;">
                 
-                <form action="" id="frm1" class="text-light">
+                <form  id="frm1" class="text-light">
+                    @csrf
                     <span onclick="document.querySelector('.loginForm').style.display='none'" class="close" title="Close Modal"><i class="fas fa-times"></i></span>
                     <h2 class="text-center">Login</h2>
                     <div class="form-group">
                         <label for="pass">Enter Name</label>
-                        <input type="text" id="loginName" class="form-control" placeholder="Full name" onblur="validateSignup('errorLoginName','loginName',/^[a-zA-Z ]{2,30}$/,2,'Username may not contain any numbers or special characters')"  required>
+                        <input type="text" name="name" id="loginName" class="form-control" placeholder="Full name" onblur="validateSignup('errorLoginName','loginName',/^[a-zA-Z ]{2,30}$/,2,'Username may not contain any numbers or special characters')"  required>
                         <div class="text-danger" id="errorLoginName"></div>
                         
                     </div>
                     <div class="form-group">
                         <label for="gpa">Enter Password</label>
-                        <input type="password" id="passy2" class="form-control" placeholder="Password"  onblur="validateSignup('errorPassName','passy2',/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,8,'Password must contain atleast one uppercase letter,1 special character and one number')" required>
+                        <input type="password" name="password" id="passy2" class="form-control" placeholder="Password"  onblur="validateSignup('errorPassName','passy2',/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,8,'Password must contain atleast one uppercase letter,1 special character and one number')" required>
                         <div class="text-danger" id="errorPassName"></div>
 
                         
                     </div>
                     <div class="text-center" >
-                        <button type="submit" id="event1" class="btn btn-info" onclick="formcheck2()">Login</button>
-                        <a href="/admin">
+                        <button type="submit" id="event1" class="btn btn-info" >Login</button>
                         
-                            <button type="submit"  class="btn btn-info" >Login As Admin</button>
-                        </a>
-                        <button type="submit" id="event2" class="btn btn-warning">Forgot Password?</button>
+                        <a href="/admin" class="btn">Admin Login</a>
                     </div>
-                    <input type="checkbox" checked>Remember Me
                     <br>
                     <br>
                     <button type="button" class="btn btn-danger" onclick="document.querySelector('.loginForm').style.display='none'">Cancel</button>
@@ -131,21 +141,22 @@
 
     </div>
 
-    <div class="signupForm">
+    <div class="signupForm" >
 
         <div class="paretnDiv modal animate text-center " style="display:flex; justify-content: center"  >
 
             <div style="width: 65%;">
                 
-                <form action="" id="frm2" class="text-light">
+                <form method="POST" action="/users" id="frm2" class="text-light">
+                    @csrf
                     <span onclick="document.querySelector('.signupForm').style.display='none'" class="close" title="Close Modal"><i class="fas fa-times"></i></span>
                     <h2 class="text-center">Sign Up</h2>
                     <div class="form-group">
-                        <label for="pass">Enter Full name</label>
-                        <input type="text" id="username"  class="form-control" placeholder="Full name" onblur="validateSignup('errorName','username',/^[a-zA-Z ]{2,30}$/,2,'Username may not contain any numbers or special characters')" required>
+                        <label for="pass" >Enter Full name</label>
+                        <input type="text" name="name" id="username"  class="form-control" placeholder="Full name" onblur="validateSignup('errorName','username',/^[a-zA-Z ]{2,30}$/,2,'Username may not contain any numbers or special characters')" required>
                         <div class="text-danger" id="errorName"></div>
                         <label >Enter Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Email" onblur="validateSignup('errorEmail','email',
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" onblur="validateSignup('errorEmail','email',
                         null,null,'Enter valid Email')" required>
                         <div class="text-danger" id="errorEmail"></div>
                         <small>We Will Never Share This With Anyone</small>
@@ -153,7 +164,7 @@
                     </div>
                     <div class="form-group">
                         <label for="gpa">Enter Password</label>
-                        <input type="password" id="passy"  class="form-control" placeholder="Password" onblur="validateSignup('errorPass','passy',/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,8,'Password must contain atleast one uppercase letter,1 special character and one number')" required>
+                        <input type="password" name="password" id="passy"  class="form-control" placeholder="Password" onblur="validateSignup('errorPass','passy',/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,8,'Password must contain atleast one uppercase letter,1 special character and one number')" required>
                         <div class="text-danger" id="errorPass"></div>
                         <label for="gpa">Confirm Password</label>
                         <input type="password" id="confirmPassy"  class="form-control" placeholder="Confirm Password" onblur="confirmPass('errorCP')" required>
@@ -173,7 +184,80 @@
         </div>
     </div>
 
-    
+    <script>
+
+        function searchSuggest(){
+            // $.ajaxSetup({
+            // headers: {
+            //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            // }
+            // });
+            
+
+
+            var str = document.getElementById("txtSearch").value
+            document.getElementById("searchSuggestion").style.display = "block";
+            document.getElementById("searchSuggestion").innerHTML = "";
+
+            var searchReq = new XMLHttpRequest();
+            
+            searchReq.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200 ){
+                    console.log("check3");
+                    const JSONResponse = JSON.parse(searchReq.responseText);
+
+                    var count =0;
+                    for(let i =0;i<JSONResponse.length;i++){
+                        for(let j =0;j<JSONResponse[i].length;j++){
+                            if(str.length>0){
+
+                                if(JSONResponse[i][j].title.toLowerCase().includes(str.toLowerCase())){
+                                    if(count <= 3){
+                                            
+                                        var newDiv = document.createElement('div')
+                                        newDiv.setAttribute('class','suggestDiv')
+                                        newDiv.innerText = JSONResponse[i][j].title
+                                        document.getElementById('searchSuggestion').append(newDiv)
+       
+                                        count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    var childNum = document.getElementById('searchSuggestion').children.length
+                    var allChildren = document.querySelectorAll('#searchSuggestion div')
+                    for(let i = 0; i< childNum;i++){
+                        allChildren[i].addEventListener("mouseenter",function(){
+                            document.getElementById('txtSearch').value = allChildren[i].innerText;
+                            localStorage.setItem('search',allChildren[i].innerText)
+                        })
+                    }
+                    for(let i = 0; i< childNum;i++){
+                        allChildren[i].addEventListener("click",function(){
+                            document.getElementById('searchSuggestion').style.display = "none"
+                        })
+                    }
+                }   
+            }
+            var url ='/request?search='+str;
+            searchReq.open("GET","data.json",true);
+            searchReq.send()
+
+            var toStore = document.getElementById('txtSearch').value;
+            localStorage.setItem('search',toStore);
+            
+        }
+
+        // function setStorage(){
+        // }
+
+        // function hide(){
+        //     document.getElementById("searchSuggestion").style.display = "none"
+        // }
+    </script>
+
+
 
 </body>
 </html>

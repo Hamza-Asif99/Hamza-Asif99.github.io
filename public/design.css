@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 body{
     margin: 0px;
     padding: 0px;
@@ -5,7 +6,7 @@ body{
     background-color: #faf1ea;
     background-size:auto;
     background-repeat: no-repeat;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto Condensed, Helvetica, sans-serif;
 }
 /* Navigation Bar CSS */
 .navbar{
@@ -24,6 +25,15 @@ body{
 }
 .search input{
     outline: none;
+}
+
+.suggestDiv{
+    padding-bottom: 0.5rem;
+
+}
+.suggestDiv:hover{
+    background-color: rgba(255,255,255,0.8);
+    color:black
 }
 /* Categories CSS */
 .categories{

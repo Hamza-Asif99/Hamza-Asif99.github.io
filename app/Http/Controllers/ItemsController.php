@@ -34,14 +34,27 @@ class ItemsController extends Controller
         return view("item")->with('items',$Items);
     }
 
-    public function homeItems($homeItems){
-        $Items = Item::where('category',$homeItems)->get();
-        return view("index")->with('items',$Items);
+    public function homeItems(){
+        $Items = Item::where('category','default')->get();
+ 
+            return view("index")->with('items',$Items);
+     
     }
 
     public function item(){
         return view("item");
     }
+
+    public function xmlhttprequest(){
+        $searchTerm =request('search');
+        if(strlen($searchTerm)>0){
+            $searchResults = DB::select(DB::raw("select title from items where title like '$searchTerm%'"));
+            return response($searchResults);
+
+         
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -75,7 +88,27 @@ class ItemsController extends Controller
         return redirect('/admin');
         
     }
+    public function toUpdate($id){
+        $Items = Item::where('id',$id)->get();
+        $Items[0]->delete();
 
+
+        return view("items.updateItem")->with('items',$Items);
+    }
+
+    // public function updateItem(Request $request, $id){
+    //     $item = Item::where('id',$id)->get();
+    //     $item->title = $request->input('title');
+    //     $item->price = $request->input('price');
+    //     $item->image = $request->input('image');
+    //     $item->desc = $request->input('desc');
+    //     $item->category = $request->input('category');
+    //     $item->quantity = $request->input('quantity');
+
+    //     $item->save();
+
+    //     return redirect('/admin');
+    // }
     /**
      * Display the specified resource.
      *
@@ -118,6 +151,8 @@ class ItemsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::where('id',$id)->get();
+        $item[0]->delete();
+        return redirect('/admin');
     }
 }

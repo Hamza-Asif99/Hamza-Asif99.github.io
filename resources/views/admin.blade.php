@@ -52,8 +52,12 @@
                                 <td>{{$item->price}}</td>
                                 <td>{{$item->desc}}</td>
                                 <td>{{$item->category}}</td>
-                                <td><i class="far fa-times-circle" style="color:red"></i></td>
-                                <td><button class="btn">Edit</button></td>
+
+                                <td><a href="{{route('item.destroy',$item->id)}}"><i class="far fa-times-circle" style="color:red"></i></a></td>
+                                <td>
+                                    <a href="{{route('toChange.toChange', $item->id)}}"><button class="btn">Edit</button></a>
+                                </td>
+                                
                             
                             </tr>
 

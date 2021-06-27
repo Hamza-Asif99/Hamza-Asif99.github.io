@@ -188,7 +188,6 @@
             @foreach($items as $item)
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="item">
-                        <!-- echo {{$item->id}} -->
                         <a href="/item"  class=" popPics">
 
                         <img src="{{$item->image}}" class="w-100" id="images" alt="Item display">
