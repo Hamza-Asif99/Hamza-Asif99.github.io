@@ -44,20 +44,31 @@
                 </div>
             </div>
             <ul class="navbar-nav active">
+                @if(Session::has('user'))
+                    <li style="padding-right:1rem" class="text-light">Welcome {{Session::get('user')}}  </li>
+                    <li>
+                        <a href="/wishList" onclick="changeStorage2()" title="Wishlist" id="wishlist" class="nav-link"><i class="fas fa-heart"></i></a>
+                    </li>
+                    <li>
                         
+                        <a href="/shoppingCart" onclick="changeStorage()" title="Shopping Cart" target="" id="cart" class="nav-link"><i class="fas fa-shopping-cart"></i></a>
+                    </li>
+                    <li>
+                        <form method="POST" action="/userGone">
+                            @csrf
+                            <!-- <a href="/userGone" class="nav-link">LogOut</a> -->
+                            <button type="submit" class="btn">LogOut</button>
+                        </form>
+                    </li>
+                @else        
                 <li>
                     <a href="#" class="nav-link" onclick="document.querySelector('.loginForm ').style.display='block'" >Login</a>
                 </li>
                 <li>
                     <a href="#" class="nav-link" onclick="document.querySelector('.signupForm ').style.display='block'">SignUp</a>
                 </li>
-                <li>
-                    <a href="/wishList" onclick="changeStorage2()" title="Wishlist" id="wishlist" class="nav-link"><i class="fas fa-heart"></i></a>
-                </li>
-                <li>
-                    
-                    <a href="/shoppingCart" onclick="changeStorage()" title="Shopping Cart" target="" id="cart" class="nav-link"><i class="fas fa-shopping-cart"></i></a>
-                </li>
+                @endif
+
             </ul>
         </div>
     </nav>
@@ -110,7 +121,7 @@
 
             <div style="width: 65%;">
                 
-                <form  id="frm1" class="text-light">
+                <form method="POST" action="/login"  id="frm1" class="text-light">
                     @csrf
                     <span onclick="document.querySelector('.loginForm').style.display='none'" class="close" title="Close Modal"><i class="fas fa-times"></i></span>
                     <h2 class="text-center">Login</h2>
@@ -167,11 +178,11 @@
                         <input type="password" name="password" id="passy"  class="form-control" placeholder="Password" onblur="validateSignup('errorPass','passy',/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,8,'Password must contain atleast one uppercase letter,1 special character and one number')" required>
                         <div class="text-danger" id="errorPass"></div>
                         <label for="gpa">Confirm Password</label>
-                        <input type="password" id="confirmPassy"  class="form-control" placeholder="Confirm Password" onblur="confirmPass('errorCP')" required>
+                        <input type="password" id="confirmPassy"  class="form-control" placeholder="Confirm Password" onblur="confirmPass('errorCP')"  required>
                         <div class="text-danger" id="errorCP"></div>                        
                     </div>
                     <div class="text-center" >
-                        <button  class="btn btn-info" onclick="formCheck()">Sign Up</button>
+                        <button  class="btn btn-info" id="signUpBTN">Sign Up</button>
                         <!-- <button type="submit" id="event2" class="btn btn-warning">Forgot Password?</button> -->
                     </div>
                     <br>

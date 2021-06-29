@@ -7,12 +7,27 @@
     <script defer src="script.js"></script>
     <script defer src="validation.js"></script>
    
-    <title>Bootstrap Front End</title>
+    <title>FastCart</title>
 </head>
 <body>
     @extends('layouts.master')
 
     @section('content')
+    
+    @if(session()->has('error'))
+    <div class="alert text-dark text-center bg-danger">
+        {{ session()->get('error') }}
+    </div>
+    @endif
+
+    @if(session()->has('success'))
+    <div class="alert text-dark text-center bg-success">
+        {{session()->get('success')}}
+    </div>
+
+    @endif  
+
+  
 
     <div class="container-fluid bodyDiv">
 
@@ -128,7 +143,7 @@
     <div class="container itemsDisplay" id="latestSearchDiv2" style="display: none;">
         <div class="center text-center">
 
-            <h3>Your Latest Searches</h3>
+            <h3>Recommended For You</h3>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">

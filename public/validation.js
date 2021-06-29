@@ -19,6 +19,7 @@ var isLogin;
                 document.getElementById(id).innerText = "";
                 document.getElementById(id2).style.border = "4px solid green";
             }
+            formCheck()
         }
         function confirmPass(id){
             var ctrl = document.getElementById("confirmPassy");
@@ -34,6 +35,7 @@ var isLogin;
                         document.getElementById("confirmPassy").style.border = "4px solid red";
                     }
                 }
+            formCheck()
         }
         function formCheck(){
             if(document.getElementById("username").style.borderColor == "green"&&document.getElementById("email").style.borderColor == "green"
@@ -42,11 +44,17 @@ var isLogin;
                 // document.getElementById("email").value = null;
                 // document.getElementById("passy").value = null;
                 // document.getElementById("confirmPass").value = null;
-                document.querySelector('.signupForm').style.display='none';
+                // document.querySelector('.signupForm').style.display='none';
                 // location.reload();
-                
+                console.log("checkity cehck check")
+                document.getElementById('signUpBTN').disabled = false;
+
+            }
+            else{
+                document.getElementById('signUpBTN').disabled = true;
             }
         }
+        // formCheck();
         function formcheck2(){
             if(document.getElementById("loginName").style.borderColor == "green" && document.getElementById("passy2").style.borderColor == "green"){
                 document.querySelector('.loginForm').style.display='none';

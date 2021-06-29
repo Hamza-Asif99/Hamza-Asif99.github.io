@@ -30,10 +30,13 @@ Route::resource('items','App\Http\Controllers\ItemsController');
 
 Route::get('/','App\Http\Controllers\ItemsController@homeItems')->name('main.main');
 
+Route::post('/userGone','App\Http\Controllers\UsersController@userOut')->name('out.out');
+
 Route::post('/search','App\Http\Controllers\SearchController@search');
 
-Route::get('/request','App\Http\Controllers\ItemsController@xmlhttprequest');
+Route::post('/login','App\Http\Controllers\UsersController@checkLogin');
 
+Route::get('/request','App\Http\Controllers\ItemsController@xmlhttprequest');
 
 Route::resource('users','App\Http\Controllers\UsersController');
 

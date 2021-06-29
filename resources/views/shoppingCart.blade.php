@@ -17,6 +17,7 @@
 
     @section('content')
     
+    @if(Session::has('user'))
 
     <div class="container itemsDisplay">
         <div class="center text-center">
@@ -105,7 +106,7 @@
     <div class="container itemsDisplay" id="latestSearchDiv2" style="display: none;">
         <div class="center text-center">
 
-            <h3>Your Latest Searches</h3>
+            <h3>Recommended For You</h3>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-4">
@@ -155,6 +156,12 @@
             
         </div>
     </div>
+
+
+    @else
+        <p class="text-dark text-center p-4 bg-warning">Login to access this page</p>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+    @endif
 
     @endsection
 

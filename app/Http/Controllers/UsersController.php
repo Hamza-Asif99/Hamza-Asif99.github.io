@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Session;
 
 class UsersController extends Controller
 {
@@ -43,6 +43,31 @@ class UsersController extends Controller
 
         $user->save();
 
+        return redirect('/')->with('success',"Account Created Succesfully. Welcome to FastCart $user->name" );
+    }
+
+    public function checkLogin(Request $request){
+
+        $user = User::where('name',$request->input('name'))->get();
+        if($user->count() == 0){
+            $Error = "User does not exist";
+            return redirect('/')->with('error',$Error);
+        }
+
+        else if($user[0]->password == $request->input('password')){
+            
+            Session::put('user',$request->input('name'));
+            return redirect('/')->with('success',"Successfully logged in");
+        }
+        else{
+            $Error = "Login credentials invalid";
+            return redirect('/')->with('error',$Error);
+        }
+    }
+
+    public function userOut(){
+        Session::flush();
+        // return view("shoppingCart");
         return redirect('/');
     }
 

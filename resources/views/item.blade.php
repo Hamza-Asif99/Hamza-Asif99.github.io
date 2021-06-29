@@ -39,6 +39,7 @@
                     <p style="color: wheat;" id="description"></p>
                 </div>
                 <div class="btns">
+                    @if(Session::has('user'))
                     <a href="/shoppingCart">
 
                         <button class="btn" id="shoppingCart">Add To Cart</button>
@@ -47,6 +48,11 @@
 
                         <button id="wishList" class="btn">Add To WishList</button>
                     </a>
+                    @else
+                        <p class="text-white">Login To Add To Cart or Wishlist</p>
+                    @endif
+                    
+                    
                 </div>
                
             </div>
