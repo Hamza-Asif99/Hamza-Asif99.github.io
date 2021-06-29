@@ -8,6 +8,10 @@ let popRightNow = document.querySelectorAll(".anchors")                         
                                                            // the categories section on the left hand side. 
                                                            // Belongs to index.html
 
+var check = "hamza"
+// localStorage.setItem(check,"yo")
+
+
 function latestSearches(image,title,price,description){
  
         let changeNow = Math.floor(Math.random() * 10);
@@ -19,56 +23,19 @@ function latestSearches(image,title,price,description){
             localStorage.setItem("latestImage1",image);
             localStorage.setItem("latestTitle1",title);
             localStorage.setItem("latestPrice1",price);
-            // localStorage.setItem("latestDesc1",description);
-            
         }
         if(localStorage.getItem("latestImage2") == null || localStorage.getItem("latestChange") >= 3 && localStorage.getItem("latestChange") < 7  ){
-            
             localStorage.setItem("latestImage2",image);
             localStorage.setItem("latestTitle2",title);
             localStorage.setItem("latestPrice2",price);
-            // localStorage.setItem("latestDesc2",description);
         }
         if(localStorage.getItem("latestImage3") == null || localStorage.getItem("latestChange") >= 7 ){
-            
             localStorage.setItem("latestImage3",image);
             localStorage.setItem("latestTitle3",title);
             localStorage.setItem("latestPrice3",price);
-            // localStorage.setItem("latestDesc3",description);
         }
 }
-// var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             var  response = JSON.parse(xhttp.responseText);
-//             // console.log(response[10].length);
-//             for(let i = 0; i < response[10].length;i++){
-//                 allImages[i].setAttribute("src",response[10][i].image);
-//                 allTitles[i].innerText = response[10][i].title; 
-//                 allPrices[i].innerText ="$"+ response[10][i].price;
-//                 allDescriptions[i].innerText =response[10][i].description;
 
-                // allAnchors[i].addEventListener("click",function(){
-                //     localStorage.setItem("image",response[10][i].image);
-                //     localStorage.setItem("title",response[10][i].title);
-                //     localStorage.setItem("price","$"+response[10][i].price);
-                //     localStorage.setItem("description",response[10][i].description);
-                //     // latestSearches(response[10][i].image,response[10][i].title,"$"+response[10][i].price,response[10][i].description)
-                // })
-
-//                 popRightNow[i].addEventListener("click",function(){
-//                     localStorage.setItem("image",response[10][i].image);
-//                     localStorage.setItem("title",response[10][i].title);
-//                     localStorage.setItem("price","$"+response[10][i].price);
-//                     localStorage.setItem("description",response[10][i].description);
-//                     latestSearches(response[10][i].image,response[10][i].title,"$"+response[10][i].price,response[10][i].description)
-//                 })
-
-//             }
-//         };
-//     }
-//     xhttp.open("GET", "data.json", true);
-//     xhttp.send();
 
 var categoryLI = document.querySelectorAll(".desktopView ul li a");
 var smallScreen = document.querySelectorAll(".smallView ul li a");
@@ -76,7 +43,6 @@ var smallScreen = document.querySelectorAll(".smallView ul li a");
 for(let i = 0; i < smallScreen.length; i++){
     smallScreen[i].addEventListener("click",function(){
         localStorage.setItem("toLoad",smallScreen[i].innerText)
-        
     })
 }
 for(let i =0;i<categoryLI.length;i++){
@@ -124,13 +90,10 @@ function latestSearchesClick(){
         allAnchors[i].addEventListener("click",function(){
             
             var searchQuery = allTitles[i].innerText
-            // alert(searchQuery)
-            
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var  response = JSON.parse(xhttp.responseText);
-                    // alert(response[0][0].title)
                     for(let i = 0; i < response.length;i++){
                         for(let j =0; j<response[i].length;j++){
                             if(searchQuery.localeCompare(response[i][j].title) == 0){

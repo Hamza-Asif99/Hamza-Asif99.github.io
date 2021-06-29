@@ -57,7 +57,7 @@
                         <form method="POST" action="/userGone">
                             @csrf
                             <!-- <a href="/userGone" class="nav-link">LogOut</a> -->
-                            <button type="submit" class="btn">LogOut</button>
+                            <button type="submit" onclick="setUser()" class="btn">LogOut</button>
                         </form>
                     </li>
                 @else        
@@ -259,6 +259,20 @@
             localStorage.setItem('search',toStore);
             
         }
+        function changeStorage(){
+            localStorage.setItem("addToTable",2)
+        }
+        function changeStorage2(){
+            localStorage.setItem("addToWishlist",2)
+        }
+
+        function setUser(){
+            // if(localStorage.getItem('tableData') == null){
+
+                
+            // }
+        }
+
 
         // function setStorage(){
         // }

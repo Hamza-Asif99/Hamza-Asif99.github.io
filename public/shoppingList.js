@@ -1,5 +1,4 @@
 if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-    // location.href = "shoppingCart.html";
     localStorage.setItem("addToTable",2);
     console.log("page reloaded")
 }
@@ -16,7 +15,6 @@ categories()
 
 if(localStorage.getItem("addToTable") == 1){
     if(localStorage.getItem("tableData") == null){
-        // console.log("check null")
         var newRow= document.createElement("tr");
         var table =document.querySelector("#list tbody");
         table.append(newRow);
@@ -313,7 +311,6 @@ function validate(){
         else{
             document.getElementById("error").style.display = "none";
             document.getElementById("quantity").style.border = "3px solid green"
-            // document.getElementById("addNow").style.display = "block"
         }
 }
 
@@ -407,7 +404,6 @@ function costCalculate(index,quantity){
 }
 
 function totalAmount(){
-    // console.log("total amount")
     var total=0;
     var allRows = document.querySelectorAll("tbody tr")
     for(let i = 0; i<allRows.length;i++){
